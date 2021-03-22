@@ -1,8 +1,10 @@
 const express = require("express");
   const Joi = require("joi");
 const nodemailer = require("nodemailer");
+const cors = require("cors")
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 const arr = [
