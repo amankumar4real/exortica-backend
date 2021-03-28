@@ -18,16 +18,16 @@ app.post("/api/send-mail", async (req, res) => {
   // doing type check
   const schema = Joi.object({
     name: Joi.string().min(3).required(),
-    "date-from": Joi.string().required(),
-    "date-to": Joi.string().required(),
-    "room-type": Joi.string().required(),
-    "room-requirements": Joi.string().required(),
-    adults: Joi.number().required(),
-    children: Joi.number().required(),
+    // "date-from": Joi.string().required(),
+    // "date-to": Joi.string().required(),
+    // "room-type": Joi.string().required(),
+    // "room-requirements": Joi.string().required(),
+    // adults: Joi.number().required(),
+    // children: Joi.number().required(),
     name: Joi.string().required(),
     email: Joi.string().required(),
     phone: Joi.string().required(),
-    "special-requirements": Joi.string().required(),
+    "special-requirements": Joi.string(),
   });
 
   const result = schema.validate(req.body);
