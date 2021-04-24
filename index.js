@@ -12,19 +12,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/send-mail", async (req, res) => {
-  // getting body of the post call
   const userDetails = req.body;
 
   // doing type check
   const schema = Joi.object({
     name: Joi.string().min(3).required(),
-    // "date-from": Joi.string().required(),
-    // "date-to": Joi.string().required(),
-    // "room-type": Joi.string().required(),
-    // "room-requirements": Joi.string().required(),
-    // adults: Joi.number().required(),
-    // children: Joi.number().required(),
-    name: Joi.string().required(),
+    // name: Joi.string().required(),
     email: Joi.string().required(),
     phone: Joi.string().required(),
     "special-requirements": Joi.string(),
@@ -61,7 +54,6 @@ app.post("/api/send-mail", async (req, res) => {
 
   // going through all the keys of the object and adding in new data in the table
   for (const field in userDetails) {
-    console.log(typeof userDetails[field]);
     myHTML += `<tr>
     <th style="padding: 15px; border: 1px solid #ddd;
     text-align: left;">${field.split("-").join(" ").toUpperCase()}</th>
@@ -75,9 +67,8 @@ app.post("/api/send-mail", async (req, res) => {
   const mailOptions = {
     from: "patliputrahotels.booking@gmail.com", // sender address
     to: [
-      "amankumar4real@gmail.com",
-      "amankumar3j@gmail.com",
-      "soumya15d@gmail.com"
+      "reservations@patliputraexotica.com",
+      "amankumar4real@gmail.com"
     ], // list of receivers
     subject: "Hotel Reservation Form", // Subject line
     html: myHTML, // html body
@@ -89,6 +80,6 @@ app.post("/api/send-mail", async (req, res) => {
   });
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("listening on port !" + (process.env.PORT || 3000));
+app.listen(process.env.PORT || 3001, () => {
+  console.log("listening on port !" + (process.env.PORT || 3001));
 });
